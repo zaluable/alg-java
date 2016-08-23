@@ -7,9 +7,10 @@ import org.junit.Test;
 public class ArrDelDul {
 	@Test
     public  void testArrDelDul() {
-        int[] arr = { 1, 2, 3, 3, 5, 6, 6, 6 };
-        int[] arr2 = diff(arr);
+        int[] arr = {2, 2, 1, 2};
         System.out.println(Arrays.toString(arr));
+        int[] arr2 = diff(arr);
+
         System.out.println(Arrays.toString(arr2));
     }
  
