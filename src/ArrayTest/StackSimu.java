@@ -5,6 +5,10 @@ import java.util.Iterator;
 
 import org.testng.annotations.Test;
 
+
+
+
+
 /**
  * @author zhangxiao3
  * 模拟栈的构成
@@ -70,19 +74,16 @@ public class StackSimu<Item> implements Iterable<Item>{
 	
 	private class ReverseArray implements Iterator<Item>{
 		private int i = N;
-		@Override
 		public boolean hasNext() {
 			if(i > 0){
 			return true;
 			}else return false;
 		}
-
-		@Override
+ 
 		public Item next() {
 			return stack[--i];
 		}
 
-		@Override
 		public void remove() {
 			// TODO Auto-generated method stub
 			
