@@ -55,6 +55,10 @@ public class QueueSimuWithNode<Item> implements Iterable<Item>{
 //		public Item remove(){
 //			
 //		}
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 	@Test
 	public void testQueueSimuWithNode(){
