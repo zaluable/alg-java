@@ -2,7 +2,9 @@ package ArrayTest;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
+
+
 
 public class ArrDelDul {
 	@Test
