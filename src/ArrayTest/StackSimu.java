@@ -101,7 +101,8 @@ public class StackSimu<Item> implements Iterable<Item>{
 			}else{
 				stackSimu.push(str);
 			}			
-			System.out.println("Size:"+stackSimu.size());
+			System.out.print("Size:"+stackSimu.size());
+			System.out.println(stackSimu.toString());
 		}
 		Iterator<String> iter = stackSimu.iterator();
 		while (iter.hasNext()){
