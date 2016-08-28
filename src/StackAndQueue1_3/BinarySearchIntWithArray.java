@@ -1,11 +1,11 @@
-package ArrayTest;
+package StackAndQueue1_3;
 
 import java.util.Arrays;
 
 import org.testng.annotations.Test;
 
 
-public class BinarySearch {
+public class BinarySearchIntWithArray {
     public static int rank(int key, int[] a) {
         int lo = 0;
         int hi = a.length - 1;

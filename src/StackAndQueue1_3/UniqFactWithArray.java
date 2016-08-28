@@ -1,4 +1,4 @@
-package ArrayTest;
+package StackAndQueue1_3;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 
 
-public class UniqFact {
+public class UniqFactWithArray {
 	//不使用ArrayList的way1
 	public int[] uniqFactWay1(int[] arr) {
 		//声明一个size变量指示uniq元素的size
