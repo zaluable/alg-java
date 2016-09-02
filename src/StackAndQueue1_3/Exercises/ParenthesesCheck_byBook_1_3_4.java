@@ -3,9 +3,12 @@ package StackAndQueue1_3.Exercises;
 import java.util.Stack;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+
 
 
 /**
@@ -61,12 +64,12 @@ public class ParenthesesCheck_byBook_1_3_4 {
 			{str2,false},
 		};
 	}
-	@BeforeTest
+	@BeforeTest(groups = "Exercises")
 	public void init(){
 		check =  new ParenthesesCheck_byBook_1_3_4();
 	}
 	
-	@Test(dataProvider = "ObjProvider")
+	@Test(dataProvider = "ObjProvider",groups = "Exercises")
 	public void testParenthesesCheck(String s,boolean expected){
 		Assert.assertEquals(check.matchParen(s), expected);
 	}

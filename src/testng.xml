@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name = "StackAndQueue1_3.Exercises">
+	<test name = "ParenthesesCheck_byBook_1_3_4">
+		<groups>
+			<run>
+				<include name = "Exercises"/>
+			</run>
+		</groups>
+		<classes>
+			<class name = "StackAndQueue1_3.Exercises.ParenthesesCheck_byBook_1_3_4"/>
+			<class name = "StackAndQueue1_3.Exercises.ParenthesesCheck_byMyWay_1_3_4"/>
+		</classes>
+	</test>
+</suite>

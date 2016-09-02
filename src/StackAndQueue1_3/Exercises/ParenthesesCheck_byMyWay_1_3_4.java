@@ -1,7 +1,10 @@
 package StackAndQueue1_3.Exercises;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 /**
  * 用栈实现一个匹配大中小括号的程序
@@ -117,18 +120,31 @@ public class ParenthesesCheck_byMyWay_1_3_4<Item> implements Iterable<Item>{
 			return false;
 		}
 	}
-	@Test
-	public void testParenthesesCheck(){
-		//{}[(())]
+	@DataProvider(name = "Strdata")
+	public  Object[][] dataProvide(Method method){
 		String[] strCase1 = {"{","}","[","(","(",")",")","]"};
-		//{[())]}
 		String[] strCase2 = {"{","[","(",")",")","]","}"};
-		//{([])}
 		String[] strCase3 = {"{","(","[","]",")","}"};
-		//([{}])
 		String[] strCase4 = {"(","[","{","}","]",")"};
+		return new Object[][]{
+			{strCase1,true},
+			{strCase2,false},
+			{strCase3,false},
+			{strCase4,false},
+		};
+	}
+	@Test(dataProvider = "Strdata",groups = "Exercises")
+	public void testParenthesesCheck(String[] strlist,boolean expected){
+		//{}[(())]
+//		String[] strCase1 = {"{","}","[","(","(",")",")","]"};
+		//{[())]}
+//		String[] strCase2 = {"{","[","(",")",")","]","}"};
+		//{([])}
+//		String[] strCase3 = {"{","(","[","]",")","}"};
+		//([{}])
+//		String[] strCase4 = {"(","[","{","}","]",")"};
 		ParenthesesCheck_byMyWay_1_3_4<String> parenthesesCheck = new ParenthesesCheck_byMyWay_1_3_4<String>();
-		boolean result = parenthesesCheck.checkParentheses(strCase4);
-		System.out.println(result);
+		Assert.assertEquals(parenthesesCheck.checkParentheses(strlist),expected);
+
 	}
 }
