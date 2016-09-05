@@ -10,7 +10,7 @@ package StackAndQueue1_3.Exercises;
  * @author zhangxiao3
  *
  */
-public class Linked<Item extends Comparable<Item>>{
+public class LinkedAPI<Item extends Comparable<Item>>{
 	private Node first;
 	private int N;
 	private class Node{
@@ -96,4 +96,23 @@ public class Linked<Item extends Comparable<Item>>{
 		}
 	}
 	
+	/**
+	 * 传首结点进来，返回链表中的max item
+	 * @param first
+	 * @return
+	 */
+	public Item max(Node first){
+		if (first == null) return null;
+		else{
+			Item max = first.item;
+			Node temp = first.next;
+			while (temp != null){
+				if (max.compareTo(temp.item) < 0) {
+					max = temp.item;
+				}
+				temp = temp.next;
+			}
+			return max;
+		}
+	}
 }
