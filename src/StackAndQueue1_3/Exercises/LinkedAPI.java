@@ -115,4 +115,37 @@ public class LinkedAPI<Item extends Comparable<Item>>{
 			return max;
 		}
 	}
+	
+	
+	/**
+	 * reverse链表用循环的方式
+	 * @param head 
+	 * @return
+	 */
+	public Node reverseWithCycle(Node head){
+		Node reverse = null;
+		Node first = head;
+		while (first != null){
+			Node second = first.next;
+			first.next = reverse;
+			reverse = first;
+			first = second;
+		}
+		return reverse;
+	}
+	
+	
+	/**
+	 * reverse链表用递归的方式
+	 * @param node 传入首结点
+	 * @return
+	 */
+	public Node reverseWithRicursion(Node node){
+		if(node == null || node.next == null) return node;
+		Node nextNode = node.next;
+		node.next = null;
+		Node rest = reverseWithRicursion(nextNode);
+		nextNode.next = node;
+		return rest;
+	}
 }
