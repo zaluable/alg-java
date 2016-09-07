@@ -106,35 +106,37 @@ public class DequeAPI_1_3_33<Item> implements Iterable<Item> {
 	}
 	class IteratorDeque implements Iterator<Item>{
 		Node point = first;
-		@Override
 		public boolean hasNext() {
 			return point == null;
 		}
 
-		@Override
 		public Item next() {
 			Item temp = point.item;
 			point = point.next;
 			return temp;
 		}
 
-		@Override
 		public void remove() {
-			if (point.pre == null){
+			if (point.pre == null && point.next != null){
 				point.next.pre = null;
 				point = point.next;
+				N--;
+			}else if(point.pre != null && point.next == null){
+				point.pre.next = point.next;
+				point = point.pre;
+				N--;
+			}else if(point.pre == null && point.next == null){
+				N = 0;
+				point = null;
+			}else{
+				Node preNode = point.pre;
+				Node nextNode = point.next;
+				nextNode.pre = preNode;
+				preNode.next = nextNode;
+				N--;
 			}
 			
 		}
 		
 	}	
-//	public boolean caseAdd(){
-//		
-//	}
-//	public boolean caseDe(){
-//		
-//	}
-//	public Item[] resize(int arraySize){
-//		
-//	}
 }
