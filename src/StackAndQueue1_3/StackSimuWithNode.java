@@ -98,6 +98,7 @@ public class StackSimuWithNode<Item> implements Iterable<Item>{
 	 * implement the iterator method
 	 *
 	 */
+
 	@SuppressWarnings("hiding")
 	private class StackIterator<Item> implements Iterator<Item>{
 		//define currentNode
@@ -113,6 +114,10 @@ public class StackSimuWithNode<Item> implements Iterable<Item>{
 			Item currentItem = currentNode.item;
 			currentNode = currentNode.next;
 			return currentItem;
+		}
+		public void remove() {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}
