@@ -19,7 +19,7 @@ package StackAndQueue1_3.Exercises;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class DequeAPI_1_3_33<Item> implements Iterable<Item> {
+public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item> {
 	private int N;
 	private Node first;
 	private Node last;
@@ -29,7 +29,7 @@ public class DequeAPI_1_3_33<Item> implements Iterable<Item> {
 		Node pre;
 	}
 
-	DequeAPI_1_3_33(){
+	DuLNodeDeque_1_3_33(){
 
 	}
 	public Node createNode(){
