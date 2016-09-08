@@ -67,22 +67,38 @@ public class LinkedWithDoubleNode_byMyWay_1_3_31<Item> {
 	 */
 	public Item deHead(){
 		if (isEmpty())return null;
-		Item temp = head.item;
-		head.next.pre = null;
-		head = head.next;
-		N--;
-		return temp;
+		if (head.next == null){
+			Item temp = head.item;
+			head = null;
+			last = null;
+			N--;
+			return temp;
+		}else{
+			Item temp = head.item;
+			head.next.pre = null;
+			head = head.next;
+			N--;
+			return temp;
+		}
 	}
 	/**从表尾删除结点
 	 * @return
 	 */
 	public Item deTail(){
 		if (isEmpty())return null;
-		Item temp = last.item;
-		last.pre.next = last.next;
-		last.pre = null;
-		N--;
-		return temp;
+		if (last.pre == null){
+			Item temp = last.item;
+			head = null;
+			last = null;
+			N--;
+			return temp;
+		}else{
+			Item temp = last.item;
+			last.pre.next = null;
+			last = last.pre;
+			N--;
+			return temp;
+		}
 	}
 	/**在指定结点前插入新结点
 	 * @param item
