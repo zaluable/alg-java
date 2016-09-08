@@ -47,72 +47,73 @@ public class ResizingArrayDeque_1_3_33<Item> {
 	public Item[] resize(int arraySize){
 	
 	}
-//	public class QueueTest {
-//		private int maxSize;
-//		private int size;
-//		private long[] queArray;
-//		private int front;
-//		private int rear;
-//
-//		public QueueTest(int s){
-//			this.maxSize = s+1;
-//			this.queArray = new long[maxSize];
-//			this.front = 0;
-//			this.rear = -1;
-//			this.size = 0;
-//		}
-//		
-//		//从对头开始增加
-//		public void addFront(long j){
-//			if(front == 0){
-//				front = maxSize;
-//			}
-//			queArray[--front] = j;
-//			size++;
-//		}
-//		
-//		//从尾部开始增加
-//		public void addRear(long j){
-//			if(rear == maxSize - 1){
-//				rear = -1;
-//			}
-//			queArray[++rear] = j;
-//			size++;
-//		}
-//		
-//		//删除头部第一个
-//		public long removeFront(){
-//			long temp = queArray[front++];
-//			if(front == maxSize){
-//				front = 0;
-//			}
-//			size--;
-//			return temp;
-//		}
-//		
-//		//删除尾部最后一个
-//		public long removeRear(){
-//			long temp = queArray[rear--];
-//			if((rear == -1)){
-//				rear = maxSize - 1;
-//			}
-//			size--;
-//			return temp;
-//		}
-//		
-//		public boolean inEmpty(){
-//			return size == 0;
-//		}
-//		
-//		public boolean ifFull(){
-//			return size == maxSize;
-//		}
-//		public long peet(){
-//			return queArray[front];
-//		}
-//		
-//		public int size(){
-//			return this.size;
-//		}
-//		
+	public class QueueTest {
+		private int maxSize;
+		private int size;
+		private long[] queArray;
+		private int front;
+		private int rear;
+
+		public QueueTest(int s){
+			this.maxSize = s+1;
+			this.queArray = new long[maxSize];
+			this.front = 0;
+			this.rear = -1;
+			this.size = 0;
+		}
+		
+		//从对头开始增加
+		public void addFront(long j){
+			if(front == 0){
+				front = maxSize;
+			}
+			queArray[--front] = j;
+			size++;
+		}
+		
+		//从尾部开始增加
+		public void addRear(long j){
+			if(rear == maxSize - 1){
+				rear = -1;
+			}
+			queArray[++rear] = j;
+			size++;
+		}
+		
+		//删除头部第一个
+		public long removeFront(){
+			long temp = queArray[front++];
+			if(front == maxSize){
+				front = 0;
+			}
+			size--;
+			return temp;
+		}
+		
+		//删除尾部最后一个
+		public long removeRear(){
+			long temp = queArray[rear--];
+			if((rear == -1)){
+				rear = maxSize - 1;
+			}
+			size--;
+			return temp;
+		}
+		
+		public boolean inEmpty(){
+			return size == 0;
+		}
+		
+		public boolean ifFull(){
+			return size == maxSize;
+		}
+		public long peet(){
+			return queArray[front];
+		}
+		
+		public int size(){
+			return this.size;
+		}
+		http://fangjian0423.github.io/2016/04/03/jdk_arraydeque/
+		
 }
