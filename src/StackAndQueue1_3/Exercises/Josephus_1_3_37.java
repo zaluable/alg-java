@@ -18,7 +18,7 @@ public class Josephus_1_3_37 {
 		this.M = M;
 		people = new int[N];
 		for (int i = 0; i < N; i++){
-			people[i] = i+1;
+			people[i] = i;
 		}
 	}
 	Josephus_1_3_37(){
@@ -35,11 +35,17 @@ public class Josephus_1_3_37 {
 	
 	public void calling(){
 		int i = 0;
-		while (N > 1 ){			
+		while (N > 1){			
 			while ((i+1) % M != 0){
 				i++;
+				System.out.println("i:"+i);
+				
 			}
-			System.out.println(dequeue(i % N));
+			System.out.println("i+++++++:"+i+" "+N);
+			int j = i % N;
+			
+			System.out.println("dequeue:"+dequeue(j)+" "+"i:"+i);
+			i++;
 		}
 	}
 //	@DataProvider(name = "Josephus")
