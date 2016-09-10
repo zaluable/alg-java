@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="38" started-at="2016-09-10T08:35:50Z" finished-at="2016-09-10T08:35:50Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="38" started-at="2016-09-10T08:35:50Z" finished-at="2016-09-10T08:35:50Z">
+      <class name="StackAndQueue1_3.Exercises.RingBuffer_1_3_39">
+        <test-method status="PASS" signature="testRingBuffer()[pri:0, instance:[]]" name="testRingBuffer" duration-ms="18" started-at="2016-09-10T16:35:50Z" finished-at="2016-09-10T16:35:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRingBuffer -->
+      </class> <!-- StackAndQueue1_3.Exercises.RingBuffer_1_3_39 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

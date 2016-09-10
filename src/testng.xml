@@ -9,6 +9,8 @@
 		<classes>
 			<class name = "StackAndQueue1_3.Exercises.ParenthesesCheck_byBook_1_3_4"/>
 			<class name = "StackAndQueue1_3.Exercises.ParenthesesCheck_byMyWay_1_3_4"/>
+			<class name = "StackAndQueue1_3.Exercises.Josephus_ByBook_1_3_37"/>
+			<class name = "StackAndQueue1_3.Exercises.Josephus_ByMyWay_1_3_37"/>
 		</classes>
 	</test>
 </suite>

@@ -79,7 +79,6 @@ public class RandomQueue_1_3_35<Item> implements Iterable<Item>{
 	
 	class RandomQueueIter implements Iterator<Item>{
 		private int tempIndex = 0;
-		@Override
 		public boolean hasNext() {
 			if (isEmpty()) return false;
 			if (tempIndex < N){
@@ -90,12 +89,10 @@ public class RandomQueue_1_3_35<Item> implements Iterable<Item>{
 			}
 		}
 
-		@Override
 		public Item next() {
 			return arr[tempIndex];
 		}
 
-		@Override
 		public void remove() {
 			// TODO Auto-generated method stub
 			
