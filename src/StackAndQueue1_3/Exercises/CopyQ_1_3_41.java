@@ -20,6 +20,9 @@ public class CopyQ_1_3_41<Item> extends QueueSimuWithNode<Item>{
 	CopyQ_1_3_41(){
 		super();
 	}
+	CopyQ_1_3_41(Item item){
+		super(item);
+	}
 	<T extends QueueSimuWithNode<Item>> CopyQ_1_3_41(T q){
 		CopyQ_1_3_41<Item> temp = new CopyQ_1_3_41<Item>();
 		while (!q.isEmpty()){

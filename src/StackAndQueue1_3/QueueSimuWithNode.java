@@ -9,10 +9,28 @@ public class QueueSimuWithNode<Item> implements Iterable<Item> {
 	private Node last; // the tail of Q
 	private int N; // the Q's size
 
-	public class Node { // helper link the item
+	protected class Node { // helper link the item
 		Item item;
 		Node next;
+		Node(){
+			
+		}
+		Node(Item item){
+			this.item = item;
+		}
 	}
+	public Node create(Item item){
+		return new Node(item);
+	}
+	
+	protected QueueSimuWithNode(){
+		
+	}
+	
+	protected QueueSimuWithNode(Item item){
+		first = create(item);
+	}
+
 
 	public int size() {
 		return N;
