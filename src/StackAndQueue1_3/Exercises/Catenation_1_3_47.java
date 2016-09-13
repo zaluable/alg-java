@@ -5,6 +5,6 @@
  */
 package StackAndQueue1_3.Exercises;
 
-public interface Catenation_1_3_47<T> {
+public interface Catenation_1_3_47<T extends Iterable<Item>> {
 	public abstract T catenat(T t1,T t2);
 }
