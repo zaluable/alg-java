@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 
 import org.testng.annotations.Test;
 
+import StackAndQueue1_3.Exercises.Catenation_1_3_47;
+
 /**
  * 用单链表实现queue的数据结构，并实现iterator，enqueue，dequeue，size，isEmpty的方法
  * @author xiao
@@ -16,15 +18,15 @@ import org.testng.annotations.Test;
  *
  * @param <Item>
  */
-public class StackSimuWithNode<Item> implements Iterable<Item> {
+public class StackSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47<Item> {
 
-	private Node<Item> first; // define the top node of the stack
+	private Node first; // define the top node of the stack
 
 	private int N; // define the stack size
 
-	private class Node<Item> { // helper linked list class
-		private Item item;
-		private Node<Item> next;
+	public class Node { // helper linked list class
+		Item item;
+		Node next;
 	}
 
 	/**
@@ -49,8 +51,8 @@ public class StackSimuWithNode<Item> implements Iterable<Item> {
 	 * @param item
 	 */
 	public void push(Item item) {
-		Node<Item> oldFirst = first;
-		first = new Node<Item>();
+		Node oldFirst = first;
+		first = new Node();
 		first.item = item;
 		first.next = oldFirst;
 		N++;
@@ -98,7 +100,7 @@ public class StackSimuWithNode<Item> implements Iterable<Item> {
 	 * @see java.lang.Iterable#iterator()
 	 */
 	public Iterator<Item> iterator() {
-		return new StackIterator<Item>(first);
+		return new StackIterator(first);
 	}
 
 	/**
@@ -106,12 +108,11 @@ public class StackSimuWithNode<Item> implements Iterable<Item> {
 	 *
 	 */
 
-	@SuppressWarnings("hiding")
-	private class StackIterator<Item> implements Iterator<Item> {
+	private class StackIterator implements Iterator<Item> {
 		// define currentNode
-		private Node<Item> currentNode;
+		private Node currentNode;
 
-		private StackIterator(Node<Item> first) {
+		private StackIterator(Node first) {
 			currentNode = first;
 		}
 
@@ -146,6 +147,12 @@ public class StackSimuWithNode<Item> implements Iterable<Item> {
 			System.out.println(toString());
 		}
 
+	}
+
+	@Override
+	public Item catenat(Item t1, Item t2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

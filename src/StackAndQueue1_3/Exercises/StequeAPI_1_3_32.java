@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * @author zhangxiao3
  *
  */
-public class StequeAPI_1_3_32<Item> {
+public class StequeAPI_1_3_32<Item> implements Catenation_1_3_47<Item>{
 	private int N;
 	private Node first;
 	private Node last;
@@ -60,5 +60,10 @@ public class StequeAPI_1_3_32<Item> {
 			N--;
 			return temp;
 		}
+	}
+	@Override
+	public Item catenat(Item t1, Item t2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -4,7 +4,9 @@ import java.util.Iterator;
 
 import org.testng.annotations.Test;
 
-public class QueueSimuWithNode<Item> implements Iterable<Item> {
+import StackAndQueue1_3.Exercises.Catenation_1_3_47;
+
+public class QueueSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47<Item> {
 	private Node first; // the head of Q
 	private Node last; // the tail of Q
 	private int N; // the Q's size
@@ -115,5 +117,11 @@ public class QueueSimuWithNode<Item> implements Iterable<Item> {
 			}
 			System.out.print("elements are:" + toString());
 		}
+	}
+
+	@Override
+	public Item catenat(Item t1, Item t2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
