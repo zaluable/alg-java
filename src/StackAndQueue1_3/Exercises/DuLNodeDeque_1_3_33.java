@@ -19,7 +19,9 @@ package StackAndQueue1_3.Exercises;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item> {
+import StackAndQueue1_3.Interface.DequeInterface;
+
+public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<Item> {
 	private int N;
 	private Node first;
 	private Node last;

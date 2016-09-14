@@ -3,7 +3,7 @@ package StackAndQueue1_3.Exercises;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import StackAndQueue1_3.Collection;
+import StackAndQueue1_3.Interface.CollectionInterface;
 
 /**
  * 一个以栈为目标的队列，是一种支持push，pop，enqueue的操作的数据类型
@@ -11,7 +11,7 @@ import StackAndQueue1_3.Collection;
  * 
  *
  */
-public class StequeAPI_1_3_32<Item> implements Collection<Item>{
+public class StequeAPI_1_3_32<Item> implements CollectionInterface<Item>{
 	private int N;
 	private Node first;
 	private Node last;
@@ -20,7 +20,7 @@ public class StequeAPI_1_3_32<Item> implements Collection<Item>{
 		Node next;
 	}
 	
-	public static <T extends StequeAPI_1_3_32<Item>,Item> T catenation(T steque1, T steque2){
+	public static <Item> StequeAPI_1_3_32<Item> catenation(StequeAPI_1_3_32<Item> steque1, StequeAPI_1_3_32<Item> steque2){
 		while (!steque2.isEmpty()){
 			steque1.enqueue(steque2.pop());
 		}
@@ -71,8 +71,6 @@ public class StequeAPI_1_3_32<Item> implements Collection<Item>{
 			return temp;
 		}
 	}
-	
-	@Override
 	public Iterator<Item> iterator() {
 		// TODO Auto-generated method stub
 		return null;
