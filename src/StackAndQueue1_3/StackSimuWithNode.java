@@ -5,8 +5,6 @@ import java.util.NoSuchElementException;
 
 import org.testng.annotations.Test;
 
-import StackAndQueue1_3.Exercises.Catenation_1_3_47;
-
 /**
  * 用单链表实现queue的数据结构，并实现iterator，enqueue，dequeue，size，isEmpty的方法
  * @author xiao
@@ -18,7 +16,7 @@ import StackAndQueue1_3.Exercises.Catenation_1_3_47;
  *
  * @param <Item>
  */
-public class StackSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47<Item> {
+public class StackSimuWithNode<Item> implements Collection<Item> {
 
 	private Node first; // define the top node of the stack
 
@@ -35,6 +33,17 @@ public class StackSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 	public StackSimuWithNode() {
 		first = null;
 		N = 0;
+	}
+	
+	public static <T extends StackSimuWithNode<Item>,Item> T catenation(T s1,T s2){
+		StackSimuWithNode<Item> temp = new StackSimuWithNode<Item>();
+		while (!s1.isEmpty()){
+			temp.push(s1.pop());
+		}
+		while (!temp.isEmpty()){
+			s2.push(temp.pop());
+		}
+		return s2;
 	}
 
 	public int size() {
@@ -132,7 +141,7 @@ public class StackSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 		}
 
 	}
-
+	
 	@Test
 	public void testStackSimuWithSingleNode() {
 		String[] strlist = { "to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is" };
@@ -147,12 +156,6 @@ public class StackSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 			System.out.println(toString());
 		}
 
-	}
-
-	@Override
-	public Item catenat(Item t1, Item t2) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

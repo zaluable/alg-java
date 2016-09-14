@@ -4,13 +4,12 @@ import java.util.Iterator;
 
 import org.testng.annotations.Test;
 
-import StackAndQueue1_3.Exercises.Catenation_1_3_47;
 
-public class QueueSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47<Item> {
+public class QueueSimuWithNode<Item> implements Collection<Item> {
 	private Node first; // the head of Q
 	private Node last; // the tail of Q
 	private int N; // the Q's size
-
+	
 	protected class Node { // helper link the item
 		Item item;
 		Node next;
@@ -20,6 +19,12 @@ public class QueueSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 		Node(Item item){
 			this.item = item;
 		}
+	}
+	public static <T extends QueueSimuWithNode<Item>,Item> T catenation(T q1,T q2){
+		while (!q2.isEmpty()){
+			q1.enqueue(q2.dequeue());
+		}
+		return q1;
 	}
 	public Node create(Item item){
 		return new Node(item);
@@ -103,8 +108,9 @@ public class QueueSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 			// TODO Auto-generated method stub
 
 		}
-	}
 
+	}
+	
 	@Test
 	public void testQueueSimuWithNode() {
 		String[] testStr = { "to", "be", "-", "not" };
@@ -119,9 +125,4 @@ public class QueueSimuWithNode<Item> implements Iterable<Item>,Catenation_1_3_47
 		}
 	}
 
-	@Override
-	public Item catenat(Item t1, Item t2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
