@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 import org.testng.annotations.Test;
 
+import StackAndQueue1_3.Interface.Collection;
+
 
 public class QueueSimuWithNode<Item> implements Collection<Item> {
 	private Node first; // the head of Q

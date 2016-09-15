@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 
 import org.testng.annotations.Test;
 
+import StackAndQueue1_3.Interface.Collection;
+import StackAndQueue1_3.Interface.Stack;
+
 /**
  * 用单链表实现queue的数据结构，并实现iterator，enqueue，dequeue，size，isEmpty的方法
  * @author xiao
@@ -16,7 +19,7 @@ import org.testng.annotations.Test;
  *
  * @param <Item>
  */
-public class StackSimuWithNode<Item> implements Collection<Item> {
+public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 
 	private Node first; // define the top node of the stack
 

@@ -3,9 +3,9 @@ package StackAndQueue1_3.Exercises;
 import java.util.NoSuchElementException;
 
 import StackAndQueue1_3.StackSimuWithNode;
-import StackAndQueue1_3.Interface.DequeInterface;
+import StackAndQueue1_3.Interface.Deque;
 
-public class DulStackDeque_1_3_48<Item> implements DequeInterface<Item> {
+public class TwoStackImpDeque_1_3_49<Item> implements Deque<Item> {
 	private StackSimuWithNode<Item> stackLeft;
 	private StackSimuWithNode<Item> stackRight;
 

@@ -19,36 +19,57 @@ package StackAndQueue1_3.Exercises;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import StackAndQueue1_3.Interface.DequeInterface;
+import StackAndQueue1_3.Interface.Deque;
 
-public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<Item> {
+public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>, Deque<Item> {
 	private int N;
 	private Node first;
 	private Node last;
-	class Node{
+
+	class Node {
 		Item item;
 		Node next;
 		Node pre;
 	}
 
-	DuLNodeDeque_1_3_33(){
+	public Node getFirst() {
+		return first;
+	}
+
+	public void setFirst(Node first) {
+		this.first = first;
+	}
+
+	public Node getLast() {
+		return last;
+	}
+
+	public void setLast(Node last) {
+		this.last = last;
+	}
+
+	DuLNodeDeque_1_3_33() {
 
 	}
-	public Node createNode(){
+
+	public Node createNode() {
 		return new Node();
 	}
-	public int size(){
+
+	public int size() {
 		return N;
 	}
-	public boolean isEmpty(){
+
+	public boolean isEmpty() {
 		return N == 0;
 	}
-	public void pushLeft(Item item){
-		if(isEmpty()){
+
+	public void pushLeft(Item item) {
+		if (isEmpty()) {
 			first = createNode();
 			first.item = item;
 			last = first;
-		}else{
+		} else {
 			Node temp = createNode();
 			temp.item = item;
 			temp.next = first;
@@ -57,12 +78,13 @@ public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<
 		}
 		N++;
 	}
-	public void pushRight(Item item){
-		if(isEmpty()){
+
+	public void pushRight(Item item) {
+		if (isEmpty()) {
 			last = createNode();
 			last.item = item;
 			first = last;
-		}else{
+		} else {
 			Node temp = createNode();
 			temp.item = item;
 			last.next = temp;
@@ -71,15 +93,17 @@ public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<
 		}
 		N++;
 	}
-	public Item popLeft(){
-		if (isEmpty()) throw new NoSuchElementException("the dequeue is Empty!");
-		if (first.next == null){
+
+	public Item popLeft() {
+		if (isEmpty())
+			throw new NoSuchElementException("the dequeue is Empty!");
+		if (first.next == null) {
 			Item temp = first.item;
 			first = null;
 			last = null;
 			N = 0;
 			return temp;
-		}else{
+		} else {
 			Item temp = first.item;
 			first.next.pre = null;
 			first = first.next;
@@ -87,15 +111,17 @@ public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<
 			return temp;
 		}
 	}
-	public Item popRight(){
-		if (isEmpty())throw new NoSuchElementException("the dequeue is Empty!");
-		if (last.pre == null){
+
+	public Item popRight() {
+		if (isEmpty())
+			throw new NoSuchElementException("the dequeue is Empty!");
+		if (last.pre == null) {
 			Item temp = last.item;
 			first = null;
 			last = null;
 			N = 0;
 			return temp;
-		}else{
+		} else {
 			Item temp = last.item;
 			last.pre.next = null;
 			last = last.pre;
@@ -103,11 +129,14 @@ public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<
 			return temp;
 		}
 	}
-	public Iterator<Item> iterator(){
+
+	public Iterator<Item> iterator() {
 		return new IteratorDeque();
 	}
-	class IteratorDeque implements Iterator<Item>{
+
+	class IteratorDeque implements Iterator<Item> {
 		Node point = first;
+
 		public boolean hasNext() {
 			return point == null;
 		}
@@ -119,26 +148,26 @@ public class DuLNodeDeque_1_3_33<Item> implements Iterable<Item>,DequeInterface<
 		}
 
 		public void remove() {
-			if (point.pre == null && point.next != null){
+			if (point.pre == null && point.next != null) {
 				point.next.pre = null;
 				point = point.next;
 				N--;
-			}else if(point.pre != null && point.next == null){
+			} else if (point.pre != null && point.next == null) {
 				point.pre.next = point.next;
 				point = point.pre;
 				N--;
-			}else if(point.pre == null && point.next == null){
+			} else if (point.pre == null && point.next == null) {
 				N = 0;
 				point = null;
-			}else{
+			} else {
 				Node preNode = point.pre;
 				Node nextNode = point.next;
 				nextNode.pre = preNode;
 				preNode.next = nextNode;
 				N--;
 			}
-			
+
 		}
-		
-	}	
+
+	}
 }

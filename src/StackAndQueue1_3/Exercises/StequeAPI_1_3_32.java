@@ -3,7 +3,7 @@ package StackAndQueue1_3.Exercises;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import StackAndQueue1_3.Interface.CollectionInterface;
+import StackAndQueue1_3.Interface.Collection;
 
 /**
  * 一个以栈为目标的队列，是一种支持push，pop，enqueue的操作的数据类型
@@ -11,7 +11,7 @@ import StackAndQueue1_3.Interface.CollectionInterface;
  * 
  *
  */
-public class StequeAPI_1_3_32<Item> implements CollectionInterface<Item>{
+public class StequeAPI_1_3_32<Item> implements Collection<Item>{
 	private int N;
 	private Node first;
 	private Node last;

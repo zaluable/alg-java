@@ -1,6 +1,6 @@
 package StackAndQueue1_3.Interface;
 
-public interface DequeInterface<Item> {
+public interface Deque<Item> {
 	
 	public abstract int size();		//双向队列中元素的数量
 	

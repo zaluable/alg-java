@@ -2,8 +2,11 @@ package StackAndQueue1_3;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.testng.annotations.Test;
+
+import StackAndQueue1_3.Interface.Stack;
 
 /**
  * 以数组的形式模拟实现栈的数据结构，包括他的push，pop，isEmpty，size的方法
@@ -12,7 +15,7 @@ import org.testng.annotations.Test;
  * @author xiao
  *
  */
-public class StackSimuWithArray<Item> implements Iterable<Item> {
+public class StackSimuWithArray<Item> implements Iterable<Item>,Stack<Item> {
 
 	private Item[] stack; // 定义一个数组变量
 
@@ -26,7 +29,7 @@ public class StackSimuWithArray<Item> implements Iterable<Item> {
 	public StackSimuWithArray() {
 	}
 
-	public Boolean isEmpty() {
+	public boolean isEmpty() {
 		return N == 0;
 	}
 
@@ -38,11 +41,23 @@ public class StackSimuWithArray<Item> implements Iterable<Item> {
 	 * @return the deleted item
 	 */
 	public Item pop() {
+		if (isEmpty()){
+			throw new NoSuchElementException();
+		}
 		Item tempItem = stack[--N]; // --后将当前所指item赋值给临时变量（指针向前指一位）
 		stack[N] = null; // 避免游离对象
 		if (N > 0 && N == stack.length / 4) {
 			resize(stack.length / 2);
 		} // 如果有效元素的长度等于栈长度的1/4，栈长度减半
+		return tempItem;
+	}
+	
+
+	public Item peek() {
+		if (isEmpty()){
+			throw new NoSuchElementException();
+		}
+		Item tempItem = stack[N-1];
 		return tempItem;
 	}
 
@@ -125,4 +140,5 @@ public class StackSimuWithArray<Item> implements Iterable<Item> {
 			System.out.println(s);
 		}
 	}
+
 }
