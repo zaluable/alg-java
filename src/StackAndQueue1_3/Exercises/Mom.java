@@ -1,4 +1,5 @@
 package StackAndQueue1_3.Exercises;
+
 /*
  * 理解类的初始化过程
  * 创建子类line的实例前会对类进行初始化，步骤如下：
@@ -10,34 +11,34 @@ package StackAndQueue1_3.Exercises;
  * 4.初始化子类的成员变量——有成员变量，counter=9;
  * 5.执行子类的构造函数，打印line33,29,35
  * */
-class Shap {  
-    void set() {   
-        System.out.println("Shap.set()");   
-    }  
-  
-    Shap() {  
-        System.out.println("Shap().in=");  
-        set(); 
-        System.out.println("Shap().out=");  
-    }  
-}  
-  
-class Line extends Shap {  
-    int counter = 9;  
-  
-    void set() {   
-          System.out.println("Line.set() counter="+counter);  
-    }  
-  
-    Line() {  
-        System.out.println("Line().in=" + counter);  
-        set();  
-        System.out.println("Line().out=" + counter);  
-    }  
-}  
-  
-public class Mom {  
-    public static void main(String[] args) {  
-        Line t = new Line();  
-    }  
-}  
+class Shap {
+	void set() {
+		System.out.println("Shap.set()");
+	}
+
+	Shap() {
+		System.out.println("Shap().in=");
+		set();
+		System.out.println("Shap().out=");
+	}
+}
+
+class Line extends Shap {
+	int counter = 9;
+
+	void set() {
+		System.out.println("Line.set() counter=" + counter);
+	}
+
+	Line() {
+		System.out.println("Line().in=" + counter);
+		set();
+		System.out.println("Line().out=" + counter);
+	}
+}
+
+public class Mom {
+	public static void main(String[] args) {
+		Line t = new Line();
+	}
+}

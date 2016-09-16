@@ -1,5 +1,6 @@
 package StackAndQueue1_3;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -19,11 +20,15 @@ import StackAndQueue1_3.Interface.Stack;
  *
  * @param <Item>
  */
-public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
+public class StackSimuWithNode<Item> implements Collection<Item>, Stack<Item> {
 
 	private Node first; // define the top node of the stack
 
 	private int N; // define the stack size
+
+	private int pushCount = 0;
+
+	private int popCount = 0;
 
 	public class Node { // helper linked list class
 		Item item;
@@ -37,13 +42,13 @@ public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 		first = null;
 		N = 0;
 	}
-	
-	public static <T extends StackSimuWithNode<Item>,Item> T catenation(T s1,T s2){
+
+	public static <T extends StackSimuWithNode<Item>, Item> T catenation(T s1, T s2) {
 		StackSimuWithNode<Item> temp = new StackSimuWithNode<Item>();
-		while (!s1.isEmpty()){
+		while (!s1.isEmpty()) {
 			temp.push(s1.pop());
 		}
-		while (!temp.isEmpty()){
+		while (!temp.isEmpty()) {
 			s2.push(temp.pop());
 		}
 		return s2;
@@ -68,6 +73,7 @@ public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 		first.item = item;
 		first.next = oldFirst;
 		N++;
+		pushCount++;
 	}
 
 	/**
@@ -81,6 +87,7 @@ public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 		Item oldItem = first.item;
 		first = first.next;
 		N--;
+		popCount++;
 		return oldItem;
 	}
 
@@ -106,36 +113,51 @@ public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 		return s.toString();
 	}
 
-	/*
+	/**
 	 * 实现Iterable的iterator方法 (non-Javadoc)
 	 * 
 	 * @see java.lang.Iterable#iterator()
 	 */
 	public Iterator<Item> iterator() {
-		return new StackIterator(first);
+		return new StackIterator(first, pushCount, popCount);
 	}
 
 	/**
 	 * implement the iterator method
 	 *
 	 */
-
-	private class StackIterator implements Iterator<Item> {
+	public class StackIterator implements Iterator<Item> {
 		// define currentNode
 		private Node currentNode;
+		private int inCount;
+		private int outCount;
 
-		private StackIterator(Node first) {
+		private boolean check() {
+			return (inCount == pushCount && outCount == popCount);
+		}
+
+		private StackIterator(Node first, int pushCount, int popCount) {
 			currentNode = first;
+			inCount = pushCount;
+			outCount = popCount;
 		}
 
 		public boolean hasNext() {
-			return currentNode != null;
+			if (!check()) {
+				throw new ConcurrentModificationException();
+			} else {
+				return currentNode != null;
+			}
 		}
 
 		public Item next() {
-			Item currentItem = currentNode.item;
-			currentNode = currentNode.next;
-			return currentItem;
+			if (!check()) {
+				throw new ConcurrentModificationException();
+			} else {
+				Item currentItem = currentNode.item;
+				currentNode = currentNode.next;
+				return currentItem;
+			}
 		}
 
 		public void remove() {
@@ -144,7 +166,7 @@ public class StackSimuWithNode<Item> implements Collection<Item>,Stack<Item> {
 		}
 
 	}
-	
+
 	@Test
 	public void testStackSimuWithSingleNode() {
 		String[] strlist = { "to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is" };

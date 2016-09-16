@@ -3,22 +3,26 @@ package StackAndQueue1_3.Exercises;
 public class QueueWithCircleLinked_byMyWay_1_3_29<Item> {
 	private int N;
 	private Node last;
-	class Node{
+
+	class Node {
 		Item item;
-		Node next;		
+		Node next;
 	}
-	public int size(){
+
+	public int size() {
 		return N;
 	}
-	public boolean isEmpty(){
-		return N==0;
+
+	public boolean isEmpty() {
+		return N == 0;
 	}
-	public void enqueue(Item item){
-		if(isEmpty()){
+
+	public void enqueue(Item item) {
+		if (isEmpty()) {
 			last = new Node();
 			last.item = item;
 			last = last.next;
-		}else{
+		} else {
 			Node temp = new Node();
 			temp.item = item;
 			temp.next = last.next;
@@ -27,7 +31,8 @@ public class QueueWithCircleLinked_byMyWay_1_3_29<Item> {
 		}
 		N++;
 	}
-	public Item dequeue(){
+
+	public Item dequeue() {
 		Item temp = last.next.item;
 		last = last.next.next;
 		N--;

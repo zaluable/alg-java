@@ -1,6 +1,7 @@
 package StackAndQueue1_3;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -15,11 +16,15 @@ import StackAndQueue1_3.Interface.Stack;
  * @author xiao
  *
  */
-public class StackSimuWithArray<Item> implements Iterable<Item>,Stack<Item> {
+public class StackSimuWithArray<Item> implements Iterable<Item>, Stack<Item> {
 
 	private Item[] stack; // 定义一个数组变量
 
 	private int N = 0; // 定义一个指针一方面标示数组的下标，一方面在赋值后N++标示数组size
+
+	private int pushCount = 0;
+
+	private int popCount = 0;
 
 	@SuppressWarnings("unchecked")
 	public StackSimuWithArray(int cap) {
@@ -41,23 +46,23 @@ public class StackSimuWithArray<Item> implements Iterable<Item>,Stack<Item> {
 	 * @return the deleted item
 	 */
 	public Item pop() {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
 		Item tempItem = stack[--N]; // --后将当前所指item赋值给临时变量（指针向前指一位）
 		stack[N] = null; // 避免游离对象
+		popCount++;
 		if (N > 0 && N == stack.length / 4) {
 			resize(stack.length / 2);
 		} // 如果有效元素的长度等于栈长度的1/4，栈长度减半
 		return tempItem;
 	}
-	
 
 	public Item peek() {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		Item tempItem = stack[N-1];
+		Item tempItem = stack[N - 1];
 		return tempItem;
 	}
 
@@ -70,6 +75,7 @@ public class StackSimuWithArray<Item> implements Iterable<Item>,Stack<Item> {
 			resize(stack.length * 2);
 		} // 容量不够时数组长度加倍
 		stack[N++] = item; // 将item赋值给当前指针位置，同时指针指向下一位
+		pushCount++;
 	}
 
 	private Item[] resize(int max) {
@@ -100,16 +106,30 @@ public class StackSimuWithArray<Item> implements Iterable<Item>,Stack<Item> {
 	// 实现Iterator接口
 	private class ReverseArray implements Iterator<Item> {
 		private int i = N;
+		private int inCount = pushCount;
+		private int outCount = popCount;
+
+		private boolean check() {
+			return (inCount == pushCount && outCount == popCount);
+		}
 
 		public boolean hasNext() {
 			if (i > 0) {
-				return true;
+				if (!check()) {
+					throw new ConcurrentModificationException();
+				} else {
+					return true;
+				}
 			} else
 				return false;
 		}
 
 		public Item next() {
-			return stack[--i];
+			if (!check()) {
+				throw new ConcurrentModificationException();
+			} else {
+				return stack[--i];
+			}
 		}
 
 		public void remove() {

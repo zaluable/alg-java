@@ -11,63 +11,68 @@ package StackAndQueue1_3.Exercises;
 import org.testng.annotations.Test;
 
 public class MoveToFront_1_3_40<Item> {
-	private Node first;		//链表头
-	class Node{
+	private Node first; // 链表头
+
+	class Node {
 		Item item;
 		Node next;
-		Node(Item item){
+
+		Node(Item item) {
 			this.item = item;
 		}
 	}
-	
-	public void push(Item item){
-		if (first == null){
+
+	public void push(Item item) {
+		if (first == null) {
 			first = new Node(item);
-		}else{
-			if(first.item == item) return;
+		} else {
+			if (first.item == item)
+				return;
 			find(item);
 			Node temp = new Node(item);
 			temp.next = first;
 			first = temp;
 		}
 	}
-	
-	public void find(Item item){
+
+	public void find(Item item) {
 		Node tempOne;
 		Node tempTwo;
 		tempOne = first;
-		while(tempOne.next != null){
+		while (tempOne.next != null) {
 			tempTwo = tempOne.next;
-			if (tempTwo.item == item){
+			if (tempTwo.item == item) {
 				tempOne.next = tempTwo.next;
 				break;
-			}else{
+			} else {
 				tempOne = tempTwo;
 			}
 		}
 	}
-	public String toString(){
+
+	public String toString() {
 		Node temp = first;
 		StringBuilder stringBuilder = new StringBuilder();
-		if(temp != null){
+		if (temp != null) {
 			stringBuilder.append(temp.item);
-			while(temp.next != null){
+			while (temp.next != null) {
 				temp = temp.next;
 				stringBuilder.append(temp.item);
 			}
-		}		
+		}
 		return stringBuilder.toString();
 	}
+
 	@Test
-	public void testMoveToFront(){
+	public void testMoveToFront() {
 		MoveToFront_1_3_40<Character> moveToFront = new MoveToFront_1_3_40<Character>();
 		String s = "abcadc";
-		for (int i = 0; i < s.length();i++){
+		for (int i = 0; i < s.length(); i++) {
 			char temp = s.charAt(i);
 			moveToFront.push(temp);
-			System.out.println("push:"+temp+"=="+moveToFront.toString());
+			System.out.println("push:" + temp + "==" + moveToFront.toString());
 		}
 		System.out.println(moveToFront.toString());
 	}
-	
+
 }

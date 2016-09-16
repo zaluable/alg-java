@@ -16,29 +16,32 @@ import StackAndQueue1_3.QueueSimuWithNode;
  * @param <Item>
  *
  */
-public class CopyQ_1_3_41<Item> extends QueueSimuWithNode<Item>{
-	CopyQ_1_3_41(){
+public class CopyQ_1_3_41<Item> extends QueueSimuWithNode<Item> {
+	CopyQ_1_3_41() {
 		super();
 	}
-	CopyQ_1_3_41(Item item){
+
+	CopyQ_1_3_41(Item item) {
 		super(item);
 	}
-	<T extends QueueSimuWithNode<Item>> CopyQ_1_3_41(T q){
+
+	<T extends QueueSimuWithNode<Item>> CopyQ_1_3_41(T q) {
 		CopyQ_1_3_41<Item> temp = new CopyQ_1_3_41<Item>();
-		while (!q.isEmpty()){
+		while (!q.isEmpty()) {
 			temp.enqueue(q.dequeue());
 		}
-		while (!temp.isEmpty()){
+		while (!temp.isEmpty()) {
 			Item item = temp.dequeue();
 			q.enqueue(item);
 			this.enqueue(item);
 		}
 	}
+
 	@Test
-	public void testCopyQ(){
+	public void testCopyQ() {
 		CopyQ_1_3_41<String> A = new CopyQ_1_3_41<String>();
-		String[] str = {"a","b","c"};
-		for (String s : str){
+		String[] str = { "a", "b", "c" };
+		for (String s : str) {
 			A.enqueue(s);
 		}
 		CopyQ_1_3_41<String> copyA = new CopyQ_1_3_41<String>(A);

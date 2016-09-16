@@ -8,6 +8,8 @@ public class DequeImpTowStack_1_3_48<Item> implements Stack<Item> {
 	private DuLNodeDeque_1_3_33<Item> deque;
 	private int N1; // 标记大小
 	private int N2;
+	public DuLNodeDeque_1_3_33<Item>.Node stack1;
+	public DuLNodeDeque_1_3_33<Item>.Node stack2;
 
 	DequeImpTowStack_1_3_48() {
 		this.deque = new DuLNodeDeque_1_3_33<Item>();
@@ -15,7 +17,6 @@ public class DequeImpTowStack_1_3_48<Item> implements Stack<Item> {
 		N2 = 0;
 	}
 
-	// stack1's methods
 	public boolean isEmpty() {
 		return size() == 0;
 	}
@@ -30,21 +31,21 @@ public class DequeImpTowStack_1_3_48<Item> implements Stack<Item> {
 	}
 
 	public Item pop() {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new NoSuchElementException();
-		}else{
+		} else {
 			Item temp = deque.popLeft();
 			N1--;
 			return temp;
-		}		
+		}
 	}
 
 	public Item peek() {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new NoSuchElementException();
-		}else{
+		} else {
 			return deque.getFirst().item;
-		}		
+		}
 	}
 
 	// stack2's methods
@@ -62,9 +63,9 @@ public class DequeImpTowStack_1_3_48<Item> implements Stack<Item> {
 	}
 
 	public Item stack2Pop() {
-		if (stack2isEmpty()){
+		if (stack2isEmpty()) {
 			throw new NoSuchElementException();
-		}else{
+		} else {
 			Item temp = deque.popRight();
 			N2--;
 			return temp;
@@ -72,10 +73,10 @@ public class DequeImpTowStack_1_3_48<Item> implements Stack<Item> {
 	}
 
 	public Item stack2Peek() {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new NoSuchElementException();
-		}else{
+		} else {
 			return deque.getLast().item;
-		}	
+		}
 	}
 }

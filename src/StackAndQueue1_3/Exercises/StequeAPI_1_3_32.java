@@ -6,41 +6,46 @@ import java.util.NoSuchElementException;
 import StackAndQueue1_3.Interface.Collection;
 
 /**
- * 一个以栈为目标的队列，是一种支持push，pop，enqueue的操作的数据类型
- * 为这种抽象数据类型定义一份API并给出一份基于链表的实现
+ * 一个以栈为目标的队列，是一种支持push，pop，enqueue的操作的数据类型 为这种抽象数据类型定义一份API并给出一份基于链表的实现
  * 
  *
  */
-public class StequeAPI_1_3_32<Item> implements Collection<Item>{
+public class StequeAPI_1_3_32<Item> implements Collection<Item> {
 	private int N;
 	private Node first;
 	private Node last;
-	class Node{
+
+	class Node {
 		Item item;
 		Node next;
 	}
-	
-	public static <Item> StequeAPI_1_3_32<Item> catenation(StequeAPI_1_3_32<Item> steque1, StequeAPI_1_3_32<Item> steque2){
-		while (!steque2.isEmpty()){
+
+	public static <Item> StequeAPI_1_3_32<Item> catenation(StequeAPI_1_3_32<Item> steque1,
+			StequeAPI_1_3_32<Item> steque2) {
+		while (!steque2.isEmpty()) {
 			steque1.enqueue(steque2.pop());
 		}
 		return steque1;
 	}
-	public int size(){
+
+	public int size() {
 		return N;
 	}
-	public boolean isEmpty(){
-		return N==0;
+
+	public boolean isEmpty() {
+		return N == 0;
 	}
-	public Node createNode(){
+
+	public Node createNode() {
 		return new Node();
 	}
-	public void push(Item item){
-		if(isEmpty()){
+
+	public void push(Item item) {
+		if (isEmpty()) {
 			first = createNode();
 			first.item = item;
 			last = first;
-		}else{
+		} else {
 			Node temp = createNode();
 			temp.item = item;
 			temp.next = first;
@@ -48,12 +53,13 @@ public class StequeAPI_1_3_32<Item> implements Collection<Item>{
 		}
 		N++;
 	}
-	public void enqueue(Item item){
-		if(isEmpty()){
+
+	public void enqueue(Item item) {
+		if (isEmpty()) {
 			last = createNode();
 			last.item = item;
 			first = last;
-		}else{
+		} else {
 			Node temp = createNode();
 			temp.item = item;
 			last.next = temp;
@@ -61,16 +67,18 @@ public class StequeAPI_1_3_32<Item> implements Collection<Item>{
 		}
 		N++;
 	}
-	public Item pop(){
-		if(isEmpty()){
+
+	public Item pop() {
+		if (isEmpty()) {
 			throw new NoSuchElementException("the steque is empty,nothing to delete");
-		}else{
+		} else {
 			Item temp = first.item;
 			first = first.next;
 			N--;
 			return temp;
 		}
 	}
+
 	public Iterator<Item> iterator() {
 		// TODO Auto-generated method stub
 		return null;
