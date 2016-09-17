@@ -1,6 +1,5 @@
 package UnionFind1_5;
 
-import StackAndQueue1_3.StackSimuWithNode;
 
 public class UnionFind_quickunion_Weighted extends UnionFindAbstract {
 
@@ -42,13 +41,14 @@ public class UnionFind_quickunion_Weighted extends UnionFindAbstract {
 	 */
 	@Override
 	public int find(int p) {
-		StackSimuWithNode<Integer> stack = new StackSimuWithNode<Integer>();
+		int temp = p;
 		while (p != id[p]) {
-			stack.push(p);
 			p = id[p];
 		}
-		while (!stack.isEmpty()){
-			id[stack.pop()] = p;
+		while (temp != p){
+			int next = id[temp];
+			id[temp] = p;
+			temp = next;
 		}
 		return p;
 	}

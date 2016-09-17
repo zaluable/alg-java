@@ -1,7 +1,11 @@
 package UnionFind1_5;
 
-public abstract class UnionFindAbstract {
+import lombok.Getter;
+import lombok.Setter;
 
+public abstract class UnionFindAbstract {
+	@Setter
+	@Getter
 	protected int count;
 
 	protected int[] id;
@@ -25,8 +29,5 @@ public abstract class UnionFindAbstract {
 		return find(p) == find(q);
 	}
 
-	public int count() {
-		return count;
-	}
 
 }

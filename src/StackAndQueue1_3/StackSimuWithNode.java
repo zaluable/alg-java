@@ -45,6 +45,7 @@ public class StackSimuWithNode<Item> implements Collection<Item>, Stack<Item> {
 
 	public static <T extends StackSimuWithNode<Item>, Item> T catenation(T s1, T s2) {
 		StackSimuWithNode<Item> temp = new StackSimuWithNode<Item>();
+		temp.equals(temp);
 		while (!s1.isEmpty()) {
 			temp.push(s1.pop());
 		}

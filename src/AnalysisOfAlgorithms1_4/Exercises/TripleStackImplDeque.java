@@ -2,6 +2,8 @@ package AnalysisOfAlgorithms1_4.Exercises;
 
 import java.util.NoSuchElementException;
 
+import org.testng.annotations.Test;
+
 import StackAndQueue1_3.StackSimuWithNode;
 import StackAndQueue1_3.Interface.Deque;
 
@@ -14,6 +16,9 @@ public class TripleStackImplDeque<Item> implements Deque<Item> {
 	TripleStackImplDeque() {
 		stackL = new StackSimuWithNode<Item>();
 		stackR = new StackSimuWithNode<Item>();
+		System.out.println(stackL.hashCode());
+		System.out.println(stackR.hashCode());
+		System.out.println(stackR.equals(stackL));
 	}
 
 	protected Item switchPop(StackSimuWithNode<Item> stack) {
@@ -59,5 +64,10 @@ public class TripleStackImplDeque<Item> implements Deque<Item> {
 		} else {
 			return switchPop(stackL);
 		}
+	}
+	
+	@Test
+	public void test(){
+		TripleStackImplDeque<String> tr = new TripleStackImplDeque<String>();
 	}
 }
