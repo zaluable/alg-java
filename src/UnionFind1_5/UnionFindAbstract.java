@@ -9,7 +9,7 @@ public abstract class UnionFindAbstract {
 	protected int count;
 
 	protected int[] id;
-	
+
 	UnionFindAbstract() {
 	}
 
@@ -28,6 +28,5 @@ public abstract class UnionFindAbstract {
 	public boolean connected(int p, int q) {
 		return find(p) == find(q);
 	}
-
 
 }

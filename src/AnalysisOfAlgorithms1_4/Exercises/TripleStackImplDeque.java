@@ -65,9 +65,9 @@ public class TripleStackImplDeque<Item> implements Deque<Item> {
 			return switchPop(stackL);
 		}
 	}
-	
+
 	@Test
-	public void test(){
+	public void test() {
 		TripleStackImplDeque<String> tr = new TripleStackImplDeque<String>();
 	}
 }
