@@ -19,7 +19,7 @@ public class MergeBU {
             }
         }
     }
-    public static void merge(Comparable[] a, int lo, int mid, int hi){
+    private static void merge(Comparable[] a, int lo, int mid, int hi){
         //copy array
         for (int i = 0; i < a.length; i++) {
             aux[i] = a[i];
