@@ -3,22 +3,17 @@ package Chapter2_ElementarySorts2_1;
 import org.testng.annotations.Test;
 
 /**
- * Created by zhangxiao3 on 2016/12/29.
+ * Created by zhangxiao3 on 2016/12/30.
  */
-public class Selection {
+public class Insertion {
     public static void sort(Comparable[] a){
         int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for(int j = i+1; j < N; j++){
-                if(less(a[j], a[min])){
-                    min = j;
-                    exch(a, i, min);
-                }
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
+                exch(a, j, j-1);
             }
         }
     }
-
     public static boolean less(Comparable v, Comparable w){
         return v.compareTo(w) < 0;
     }
@@ -33,7 +28,7 @@ public class Selection {
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i]+" ");
         }
-        System.out.println("  ");
+        System.out.println(" ");
     }
 
     public static boolean isSorted(Comparable[] a){
@@ -45,9 +40,8 @@ public class Selection {
         return true;
     }
     @Test
-    public void testSelection(){
-        Comparable[] a = {"B", "C", "A"};
-//        Comparable[] a = {2, 1, 3, 0, 4};
+    public void testInsertion(){
+        Comparable[] a = {2, 1, 3, 0, 4};
         show(a);
         sort(a);
         show(a);
